@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Slider from 'material-ui/Slider';
+import '../App.css';
 
 export default class SliderUI extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      sliderValue: 12
+      sliderValue: 15
     };
 
     this.handleSlider = this.handleSlider.bind(this);
@@ -16,24 +17,25 @@ export default class SliderUI extends Component {
     this.setState({
       sliderValue: value
     });
+    this.props.onSliderChange(value);
   }
 
   render() {
     return (
-      <span className="slider">
+      <div className="Slider">
         <Slider 
           min={0}
           max={23}
           step={1}
-          defaultValue={12}
-          value={this.state.sliderValue}
+          defaultValue={this.props.sliderValue}
+          value={this.props.sliderValue}
           onChange={this.handleSlider}
         />
         <p>
         <span>{'The value of the slider is: '}</span>
-        <span>{this.state.sliderValue}</span>
+        <span>{this.props.sliderValue}</span>
         </p>
-      </span>
+      </div>
     );
   }
 }
