@@ -6,17 +6,10 @@ export default class SliderUI extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      sliderValue: 15
-    };
-
     this.handleSlider = this.handleSlider.bind(this);
   }
 
   handleSlider(event, value) {
-    this.setState({
-      sliderValue: value
-    });
     this.props.onSliderChange(value);
   }
 
@@ -31,10 +24,6 @@ export default class SliderUI extends Component {
           value={this.props.sliderValue}
           onChange={this.handleSlider}
         />
-        <p>
-        <span>{'The value of the slider is: '}</span>
-        <span>{this.props.sliderValue}</span>
-        </p>
       </div>
     );
   }

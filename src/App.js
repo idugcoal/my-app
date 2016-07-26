@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sliderValue: 17
+      sliderValue: 12
     }
 
     this.handleSliderChange = this.handleSliderChange.bind(this);
