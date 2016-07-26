@@ -20,20 +20,20 @@ export default class SliderUI extends Component {
 
   render() {
     return (
-      <div className="slider">
+      <span className="slider">
         <Slider 
           min={0}
           max={23}
           step={1}
           defaultValue={12}
-          value={this.state.secondSlider}
+          value={this.state.sliderValue}
           onChange={this.handleSlider}
         />
         <p>
         <span>{'The value of the slider is: '}</span>
         <span>{this.state.sliderValue}</span>
         </p>
-      </div>
+      </span>
     );
   }
 }
