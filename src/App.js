@@ -1,20 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Slider from './components/Slider';
+import Header from './components/Header';
+import Clock from './components/Clock';
+import Crimes from './components/Crimes';
 import './App.css';
 
+injectTapEventPlugin();
+
 class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      sliderValue: 12
+    }
+
+    this.handleSliderChange = this.handleSliderChange.bind(this);
+  }
+
+  handleSliderChange(value) {
+    this.setState({
+      sliderValue: value
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <MuiThemeProvider>
+        <div className="App">
+          <Header />
+          <br />
+          <Clock sliderValue={this.state.sliderValue}/>
+          <Slider 
+            onSliderChange={this.handleSliderChange} 
+            sliderValue={this.state.sliderValue}
+          />
+          <Crimes sliderValue={this.state.sliderValue}/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          TESTING 123
-        </p>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
