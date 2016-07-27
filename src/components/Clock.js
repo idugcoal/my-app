@@ -4,7 +4,6 @@ import '../App.css';
 export default class Clock extends Component {
   
   convertTime(hour) {
-    
     var meridian = hour < 12 ? 'am' : 'pm';
     
     if (hour === 0) {
@@ -17,7 +16,6 @@ export default class Clock extends Component {
       <div className="Time"> {hour + ':00 ' + meridian} </div>
     )
   }
-
 
   render() {
     return (

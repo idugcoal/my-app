@@ -3,7 +3,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Slider from './components/Slider';
 import Header from './components/Header';
-import Clock from './components/Clock'
+import Clock from './components/Clock';
+import Crimes from './components/Crimes';
 import './App.css';
 
 injectTapEventPlugin();
@@ -30,11 +31,13 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="App">
           <Header />
+          <br />
+          <Clock sliderValue={this.state.sliderValue}/>
           <Slider 
             onSliderChange={this.handleSliderChange} 
             sliderValue={this.state.sliderValue}
           />
-          <Clock sliderValue={this.state.sliderValue}/>
+          <Crimes sliderValue={this.state.sliderValue}/>
         </div>
       </MuiThemeProvider>
     );

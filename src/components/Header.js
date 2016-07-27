@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from '../handcuffs.svg';
 import '../App.css';
 
-
 export default class Header extends Component {
   
   render() {

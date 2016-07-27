@@ -36,11 +36,19 @@ font-family: 'Orbitron', sans-serif;
   text-align: center;
 }
 
+.Crimes {
+
+}
+
 .Slider {
   font-size: large;
   text-align: center;
-  width: 80%;
+  width: 75%;
   margin: auto;
+}
+
+.Time {
+
 }
 
 @keyframes spin {
