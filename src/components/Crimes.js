@@ -6,34 +6,47 @@ export default class Crimes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      crimes: [1, 2, 3]
+      crimes: [
+      {"time_occ": 855, "dr_no": 1},
+      {"time_occ": 855, "dr_no": 2},
+      {"time_occ": 855, "dr_no": 3},
+      {"time_occ": 855, "dr_no": 4},
+      {"time_occ": 855, "dr_no": 5},
+      ]
     }
     this.getCrimes = this.getCrimes.bind(this);
     this.renderList = this.renderList.bind(this);
   }
 
   componentDidMount() {
-    axios.get("https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27")
+    this.serverRequest = axios.get("https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27")
       .then((res) => {
-        console.log('res.data', res.data);
+        // console.log('res.data', res.data);
         this.setState({
           crimes: res.data
         });
       })
   }
 
+  componentWillUnmount() {
+    this.serverRequest.abort();
+  }
+
   getCrimes(time) {
-    console.log(time);
+    console.log(time, this.state.crimes.length);
     // this.state.crimes.map((crime) => {
     //   console.log(crime.area);
     // })
   }
 
   renderList(time) {
-    console.log(this.state.crimes);
-    return this.state.crimes.map((crime, index) => {
-      return <div> {index} </div>
-    })
+    console.log('crimes[0]', this.state.crimes[0]);
+    // getCrimes(time);
+    // console.log('crimes[0][time_occ]',this.state.crimes[0][time_occ]);
+    // return this.state.crimes.filter((crime, index) => {
+    //   if(time === Math.floor(crime[time_occ] / 100))
+    //   return <div key={index}> {crime} </div>
+    // })
   }
 
   render() {
