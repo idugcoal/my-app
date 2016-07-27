@@ -16,9 +16,10 @@ app.post('/', (req, res) => {
     body += chunk;
   });
   req.on('end', () => {
-    let cocoa = JSON.parse(body);
-    console.log(cocoa);
+    let params = JSON.parse(body);
+    let time = params;
     // let params = {screen_name: username.username, count: '25'};
+    console.log('time', time)
 
   });
 });
