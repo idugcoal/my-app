@@ -11,9 +11,16 @@ var api = require('../secret');
 console.log(api);
 
 app.post('/', (req, res) => {
-  console.log('req.params', req.body, req.params);
-  res.send('hello world');
+  var body = ''
+  req.on('data', (chunk) => {
+    body += chunk;
+  });
+  req.on('end', () => {
+    let cocoa = JSON.parse(body);
+    console.log(cocoa);
+    // let params = {screen_name: username.username, count: '25'};
 
+  });
 });
 
 app.listen(3001, () => {
