@@ -5,32 +5,41 @@ export default class Crimes extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      crimes: [1, 2, 3]
+    }
     this.getCrimes = this.getCrimes.bind(this);
+    this.renderList = this.renderList.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get("https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27")
+      .then((res) => {
+        console.log('res.data', res.data);
+        this.setState({
+          crimes: res.data
+        });
+      })
   }
 
   getCrimes(time) {
-    var headers = {
-     'Content-Type': 'application/json'
-     // 'params': { time: time }
-    }
+    console.log(time);
+    // this.state.crimes.map((crime) => {
+    //   console.log(crime.area);
+    // })
+  }
 
-    axios.post('http://localhost:3001', {
-      params: {
-        time: time
-      }
+  renderList(time) {
+    console.log(this.state.crimes);
+    return this.state.crimes.map((crime, index) => {
+      return <div> {index} </div>
     })
-      .then((res) => {
-        console.log('RESPONSE:', time, res);
-      })
-      .catch((err) => {
-        console.log('ERROR:', err);
-      });
   }
 
   render() {
     return (
       <div className="Crimes"> 
-        {this.getCrimes(this.props.sliderValue)}
+        {this.renderList(this.props.sliderValue)}
       </div>
     )
   }
