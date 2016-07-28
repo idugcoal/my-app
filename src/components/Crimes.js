@@ -22,9 +22,7 @@ export default class Crimes extends Component {
     this.serverRequest = axios.get("https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27")
       .then((res) => {
         // console.log('res.data', res.data);
-        this.setState({
-          crimes: res.data
-        });
+        this.props.onCrimes(res.data);
       })
   }
 
@@ -40,19 +38,16 @@ export default class Crimes extends Component {
   }
 
   renderList(time) {
-    console.log('crimes[0]', this.state.crimes[0]);
-    // getCrimes(time);
-    // console.log('crimes[0][time_occ]',this.state.crimes[0][time_occ]);
-    // return this.state.crimes.filter((crime, index) => {
-    //   if(time === Math.floor(crime[time_occ] / 100))
-    //   return <div key={index}> {crime} </div>
-    // })
+    // console.log('crimes[0]', this.state.crimes[0]);
+    return (
+      {time}
+    )
   }
 
   render() {
     return (
       <div className="Crimes"> 
-        {this.renderList(this.props.sliderValue)}
+        {(this.props.sliderValue)}
       </div>
     )
   }

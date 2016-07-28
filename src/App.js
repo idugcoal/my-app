@@ -5,6 +5,7 @@ import Slider from './components/Slider';
 import Header from './components/Header';
 import Clock from './components/Clock';
 import Crimes from './components/Crimes';
+import CrimeDetail from './components/CrimeDetail'
 import './App.css';
 
 injectTapEventPlugin();
@@ -18,11 +19,19 @@ class App extends Component {
     }
 
     this.handleSliderChange = this.handleSliderChange.bind(this);
+    this.handleCrimes = this.handleCrimes.bind(this);
   }
 
   handleSliderChange(value) {
     this.setState({
       sliderValue: value
+    })
+  }
+
+  handleCrimes(value) {
+    console.log('APPPPPPP', value)
+    this.setState({
+      crimes: value
     })
   }
 
@@ -37,7 +46,11 @@ class App extends Component {
             onSliderChange={this.handleSliderChange} 
             sliderValue={this.state.sliderValue}
           />
-          <Crimes sliderValue={this.state.sliderValue}/>
+          <Crimes 
+            onCrimes={this.handleCrimes}
+            sliderValue={this.state.sliderValue}
+          />
+          <CrimeDetail />
         </div>
       </MuiThemeProvider>
     );
