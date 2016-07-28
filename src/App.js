@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Slider from './components/Slider';
 import Header from './components/Header';
 import Clock from './components/Clock';
@@ -36,8 +37,23 @@ class App extends Component {
   }
 
   render() {
+
+    const muiTheme = getMuiTheme({
+      slider: {
+        trackSize: 4,
+        trackColor: '#222',
+        trackColorSelected: '#222',
+        handleSize: 24,
+        handleSizeActive: 20,
+        handleColorZero: '#e86168',
+        handleFillColor: '#e86168',
+        selectionColor: '#68E861',
+        rippleColor: '#e86168'
+      },
+    });
+
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <Header />
           <br />
