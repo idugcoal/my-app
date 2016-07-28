@@ -45,8 +45,8 @@ class App extends Component {
         trackColorSelected: '#222',
         handleSize: 24,
         handleSizeActive: 20,
-        handleColorZero: '#e86168',
-        handleFillColor: '#e86168',
+        handleColorZero: '#68E861',
+        handleFillColor: '#68E861',
         selectionColor: '#68E861',
         rippleColor: '#e86168'
       },
@@ -66,7 +66,7 @@ class App extends Component {
             onCrimes={this.handleCrimes}
             sliderValue={this.state.sliderValue}
           />
-          <CrimeDetail />
+          <CrimeDetail crimesArray={this.state.crimes}/>
         </div>
       </MuiThemeProvider>
     );
