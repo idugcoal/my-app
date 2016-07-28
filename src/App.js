@@ -5,6 +5,7 @@ import Slider from './components/Slider';
 import Header from './components/Header';
 import Clock from './components/Clock';
 import Crimes from './components/Crimes';
+import CrimeDetail from './components/CrimeDetail'
 import './App.css';
 
 injectTapEventPlugin();
@@ -49,6 +50,7 @@ class App extends Component {
             onCrimes={this.handleCrimes}
             sliderValue={this.state.sliderValue}
           />
+          <CrimeDetail />
         </div>
       </MuiThemeProvider>
     );
