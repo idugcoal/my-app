@@ -46,8 +46,7 @@ export default class Crimes extends Component {
 
   render() {
     return (
-      <div className="Crimes"> 
-        {(this.props.sliderValue)}
+      <div className="Crime"> 
       </div>
     )
   }

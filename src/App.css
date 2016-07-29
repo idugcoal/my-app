@@ -36,14 +36,29 @@ font-family: 'Orbitron', sans-serif;
   text-align: center;
 }
 
-.Crimes {
+.CrimeBox {
+  width: 8.5vw;
+  height: 8.5vw;
+  padding: .25vw;
+  margin: .25vw;
+  float: left;
+  text-align: center;
+  border-style: solid;
+  border-width: .25vw;
+}
 
+.Crimes {
+  clear: both;
+  width: 80vw;
+  height: auto;
+  margin: auto;
+  padding: 3px;
 }
 
 .Slider {
   font-size: large;
   text-align: center;
-  width: 75%;
+  width: 80vw;
   margin: auto;
 }
 
