@@ -21,6 +21,9 @@ font-family: 'Orbitron', sans-serif;
   padding: 20px;
   color: white;
   text-align: center;
+  font-family: 'Orbitron', serif;
+  font-size: 2vw;
+
 }
 
 .App-intro {
@@ -29,7 +32,7 @@ font-family: 'Orbitron', sans-serif;
 }
 
 .Clock {
-  color: #68E861;
+  color: #222;
   font-family: 'Orbitron', serif;
   font-size: 4vw;
   margin: auto;
@@ -45,6 +48,8 @@ font-family: 'Orbitron', sans-serif;
   text-align: center;
   border-style: solid;
   border-width: .25vw;
+  font-family: 'Orbitron', serif;
+  font-size: .9vw;
 }
 
 .Crimes {

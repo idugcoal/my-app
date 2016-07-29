@@ -20,12 +20,10 @@ export default class CrimeDetail extends Component {
     if(crimes === undefined) return ''
     else {
       return crimes.filter((crime) => {
-        // console.log(crime.crm_cd);
-        // return crimes filtered by time
         return (Math.floor(crime.time_occ / 100) === time)
       })
+      // filteredCrimes = every crime for the selected hour
       .map((filteredCrimes, index) => {
-        // return 
         return (
           <div 
             className="CrimeBox"
@@ -34,8 +32,7 @@ export default class CrimeDetail extends Component {
           >
             {filteredCrimes.crmcd_desc}
           </div>
-        )
-        
+        )        
       })
 
     }
