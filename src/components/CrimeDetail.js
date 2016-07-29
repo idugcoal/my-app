@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+const codes = require('../../codes.json');
+
 export default class CrimeDetail extends Component {
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      colors: ['#68e861', '#e86168', '#e8a061', '#616fe8']
+    };
+
     this.renderList = this.renderList.bind(this);
   }
 
-  renderList(crimes) {
+  renderList(crimes, time) {
+    
     if(crimes === undefined) return ''
     else {
-      crimes.filter((crime) => {
+      return crimes.filter((crime) => {
         // console.log(crime.crm_cd);
-        return crime.crm_cd == 648
-      }).map((arson) => {
-        console.log(arson.crm_cd);        
-        <div className="CrimeBox">{arson}</div>
+        // return crimes filtered by time
+        return (Math.floor(crime.time_occ / 100) === time)
+      })
+      .map((filteredCrimes, index) => {
+        // return 
+        return (
+          <div 
+            className="CrimeBox"
+            key={filteredCrimes.dr_no} 
+            style={{"borderColor": this.state.colors[index % 4]}}
+          >
+            {filteredCrimes.crmcd_desc}
+          </div>
+        )
         
       })
 
@@ -27,7 +44,7 @@ export default class CrimeDetail extends Component {
   render() {
     return (
       <div className="Crimes"> 
-        {this.renderList(this.props.crimesArray)}
+        {this.renderList(this.props.crimesArray, this.props.time)}
       </div>
     )
   }

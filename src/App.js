@@ -66,7 +66,10 @@ class App extends Component {
             onCrimes={this.handleCrimes}
             sliderValue={this.state.sliderValue}
           />
-          <CrimeDetail crimesArray={this.state.crimes}/>
+          <CrimeDetail 
+            crimesArray={this.state.crimes} 
+            time={this.state.sliderValue}
+          />
         </div>
       </MuiThemeProvider>
     );
