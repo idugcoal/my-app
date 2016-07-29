@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   handleCrimes(value) {
-    console.log('APPPPPPP', value)
     this.setState({
       crimes: value
     })
