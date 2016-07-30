@@ -13,6 +13,8 @@ font-family: 'Orbitron', sans-serif;
 .App-logo {
   height: 80px;
   filter: invert(100%);
+  /*animation: spin infinite 3s linear;*/
+
 }
 
 .App-header {
@@ -23,6 +25,7 @@ font-family: 'Orbitron', sans-serif;
   text-align: center;
   font-family: 'Orbitron', serif;
   font-size: 2vw;
+  /*animation: spin infinite 20s linear;*/
 
 }
 
