@@ -79,44 +79,22 @@ font-family: 'Orbitron', sans-serif;
   to { transform: rotate(360deg); }
 }
 
-svg {
-  font: 10px sans-serif;
-}
 
-.y.axis path {
-  display: none;
-}
+  .bar{
+    fill: steelblue;
+  }
 
-.y.axis line {
-  stroke: #fff;
-  stroke-opacity: .2;
-  shape-rendering: crispEdges;
-}
+  .bar:hover{
+    fill: brown;
+  }
 
-.y.axis .zero line {
-  stroke: #000;
-  stroke-opacity: 1;
-}
+  .axis {
+    font: 10px sans-serif;
+  }
 
-.title {
-  font: 300 78px Helvetica Neue;
-  fill: #666;
-}
-
-.birthyear,
-.age {
-  text-anchor: middle;
-}
-
-.birthyear {
-  fill: #fff;
-}
-
-rect {
-  fill-opacity: .6;
-  fill: #e377c2;
-}
-
-rect:first-child {
-  fill: #1f77b4;
-}
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
