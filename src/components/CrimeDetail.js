@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
+const d3 = require('d3');
 
-const codes = require('../../codes.json');
+// const codes = require('../../codes.json');
 
+// console.log(d3);
 export default class CrimeDetail extends Component {
 
   constructor(props) {
@@ -15,7 +17,7 @@ export default class CrimeDetail extends Component {
 
     this.renderList = this.renderList.bind(this);
     this.getCrimesByHour = this.getCrimesByHour.bind(this);
-    this.getCrimeCounts = this.getCrimeCounts.bind(this);
+    // this.getCrimeCounts = this.getCrimeCounts.bind(this);
   }
 
   getCrimesByHour(crimes, time) {
@@ -25,57 +27,35 @@ export default class CrimeDetail extends Component {
     })
   }
 
-  getCrimeCounts(crimes) {
-    return crimes.reduce((counts, crime) => {
-      if(counts.hasOwnProperty(crime.crm_cd)) {
-        return counts[crime.crm_cd]++;
-    console.log('hello')
-      } else {
-        counts[crime.crm_cd] = 1;
-        return counts;
-      }
-    }, {})
-  }
+  // getCrimeCounts(crimes) {
+  //   return crimes.reduce((counts, crime) => {
+  //     if(counts.hasOwnProperty(crime.crm_cd)) {
+  //       return counts[crime.crm_cd]++;
+  //     } else {
+  //       counts[crime.crm_cd] = 1;
+  //       return counts;
+  //     }
+  //   }, {})
+  // }
 
   renderList(crimes, time) {
     
     if(crimes === undefined) return '';
-    // let crimeCounts = {};
+    
+    let crimeCounts = {};
     let crimesByHour = this.getCrimesByHour(crimes, time);
-    let crimeCounts = this.getCrimeCounts(crimesByHour);
-    // crimesByHour.forEach((crime) => {
-    //   // console.log(crime.crm_cd)
-    //   if(crimeCounts.hasOwnProperty(crime.crm_cd)) crimeCounts[crime.crm_cd]++;
-    //   else crimeCounts[crime.crm_cd] = 1;
-    //   // console.log('crimeCounts', crimeCounts);
-    // })
-
-    console.log('results', crimeCounts)
-      for(key in crimeCounts) {
-        if(crimeCounts.hasOwnProperty(key)) {
-        console.log(key);
-        //   return (
-        //     <div 
-        //       className="CrimeBox"
-        //       style={{"borderColor": this.state.colors[index % 4]}}
-        //     >
-        //     {key} 
-        //     </div>
-        //   )
+    
+    crimesByHour.forEach((crime) => {
+      if(crimeCounts.hasOwnProperty(crime.crm_cd)) {
+        crimeCounts[crime.crm_cd]++;
+      } else {
+        crimeCounts[crime.crm_cd] = 1;
       }
-    }
+    });
+      // this.setState({crimeCounts: crimeCounts});
 
-    // return crimesByHour.map((filteredCrimes, index) => {
-    //   return (
-    //     <div 
-    //       className="CrimeBox"
-    //       key={filteredCrimes.dr_no} 
-    //       style={{"borderColor": this.state.colors[index % 4]}}
-    //     >
-    //       {filteredCrimes.crmcd_desc}
-    //     </div>
-    //   )        
-    // })
+    console.log('crimeCounts', crimeCounts);
+
 
     }
 

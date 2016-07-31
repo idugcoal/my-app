@@ -21,6 +21,7 @@ class App extends Component {
 
     this.handleSliderChange = this.handleSliderChange.bind(this);
     this.handleCrimes = this.handleCrimes.bind(this);
+    // this.handleCrimeCounts = this.handleCrimeCounts.bind(this);
   }
 
   handleSliderChange(value) {
@@ -34,6 +35,13 @@ class App extends Component {
       crimes: value
     })
   }
+
+  // handleCrimeCounts(crimeCounts) {
+  //   console.log('HANDLED', crimeCounts);
+  //   // this.setState({
+  //   //   crimeCounts: crimeCounts
+  //   // })
+  // }
 
   render() {
 
@@ -68,6 +76,7 @@ class App extends Component {
           <CrimeDetail 
             crimesArray={this.state.crimes} 
             time={this.state.sliderValue}
+            // onCrimeCounts={this.handleCrimeCounts}
           />
         </div>
       </MuiThemeProvider>
