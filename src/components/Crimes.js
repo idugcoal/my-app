@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
+import Chart from './Chart';
 const axios = require('axios');
 
-export default class Crimes extends Component {
 
+export default class Crimes extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
-      crimes: [
-      {"time_occ": 855, "dr_no": 1},
-      {"time_occ": 855, "dr_no": 2},
-      {"time_occ": 855, "dr_no": 3},
-      {"time_occ": 855, "dr_no": 4},
-      {"time_occ": 855, "dr_no": 5},
-      ]
+      crimes: '',
     }
-    this.getCrimes = this.getCrimes.bind(this);
+
     this.renderList = this.renderList.bind(this);
   }
 
   componentDidMount() {
-    this.serverRequest = axios.get("https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27")
+    const crimeApiUrl = "https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27";
+    this.serverRequest = axios.get(crimeApiUrl)
       .then((res) => {
-        // console.log('res.data', res.data);
-        this.props.onCrimes(res.data);
+        this.setState({crimes: res.data})
       })
   }
 
@@ -30,23 +26,34 @@ export default class Crimes extends Component {
     this.serverRequest.abort();
   }
 
-  getCrimes(time) {
-    console.log(time, this.state.crimes.length);
-    // this.state.crimes.map((crime) => {
-    //   console.log(crime.area);
-    // })
-  }
+  renderList(crimes, time) {
+    
+    let crimeCounts = {};
+    let crimesByHour = crimes.filter(crime => Math.floor(crime.time_occ / 100) === time);
 
-  renderList(time) {
-    // console.log('crimes[0]', this.state.crimes[0]);
+    crimesByHour.forEach((crime) => {
+      if(crimeCounts.hasOwnProperty(crime.crm_cd)) {
+        crimeCounts[crime.crm_cd]++;
+      } else {
+        crimeCounts[crime.crm_cd] = 1;
+      }
+    });
+
+    // console.log('crimeCounts', crimeCounts);
+
     return (
-      {time}
+      <div>
+        <Chart crimeCounts={crimeCounts} />
+      </div>
     )
   }
 
   render() {
+    if(this.state.crimes === '') return <div> TESTING 123... </div>
     return (
       <div className="Crime"> 
+        <h1>CRIME</h1>
+        {this.renderList(this.state.crimes, this.props.sliderValue)}
       </div>
     )
   }
