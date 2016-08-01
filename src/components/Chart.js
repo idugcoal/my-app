@@ -27,10 +27,10 @@ export default class Chart extends Component {
 		obj.values = values
 
 		values.map((a) => {
-			console.log('a', a)
+			// console.log('a', a)
 			return a;
 		});
-		console.log('RESULTS', ReactD3)
+		// console.log('RESULTS', ReactD3)
 		return obj;
 	}
 	
