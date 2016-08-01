@@ -18,7 +18,6 @@ export default class Crimes extends Component {
     const crimeApiUrl = "https://data.lacity.org/resource/y9pe-qdrd.json?$where=date_occ%20between%20%272015-10-01T12:00:00%27%20and%20%272016-01-01T00:00:00%27";
     this.serverRequest = axios.get(crimeApiUrl)
       .then((res) => {
-        // this.props.onCrimes(res.data);
         this.setState({crimes: res.data})
       })
   }
@@ -40,7 +39,13 @@ export default class Crimes extends Component {
       }
     });
 
-    console.log('crimeCounts', crimeCounts, d3);
+    // console.log('crimeCounts', crimeCounts);
+
+    return (
+      <div>
+        <Chart crimeCounts={crimeCounts} />
+      </div>
+    )
   }
 
   render() {
