@@ -19,6 +19,7 @@ export default class Crimes extends Component {
     this.serverRequest = axios.get(crimeApiUrl)
       .then((res) => {
         this.setState({crimes: res.data})
+        console.log('CRIMES', this.state.crimes);
       })
   }
 
