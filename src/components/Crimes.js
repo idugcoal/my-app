@@ -19,6 +19,7 @@ export default class Crimes extends Component {
     this.serverRequest = axios.get(crimeApiUrl)
       .then((res) => {
         this.setState({crimes: res.data})
+        console.log('CRIMES', this.state.crimes);
       })
   }
 
@@ -29,7 +30,7 @@ export default class Crimes extends Component {
   renderList(crimes, time) {
     
     let crimeCounts = {};
-    let crimesByHour = crimes.filter(crime => Math.floor(crime.time_occ / 100) === time);
+    let crimesByHour = crimes.filter(crime => (Math.floor(crime.time_occ / 100) === time) && (crime.crm_cd === '310' || crime.crm_cd === '354' || crime.crm_cd === '624' || crime.crm_cd === '740'));
 
     crimesByHour.forEach((crime) => {
       if(crimeCounts.hasOwnProperty(crime.crm_cd)) {

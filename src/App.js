@@ -6,6 +6,7 @@ import Slider from './components/Slider';
 import Header from './components/Header';
 import Clock from './components/Clock';
 import Crimes from './components/Crimes';
+import Checkboxes from './components/Checkboxes'
 // import CrimeDetail from './components/CrimeDetail';
 import './App.css';
 
@@ -22,6 +23,7 @@ class App extends Component {
     this.handleSliderChange = this.handleSliderChange.bind(this);
     // this.handleCrimes = this.handleCrimes.bind(this);
     // this.handleCrimeCounts = this.handleCrimeCounts.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleSliderChange(value) {
@@ -30,18 +32,9 @@ class App extends Component {
     })
   }
 
-  // handleCrimes(value) {
-  //   this.setState({
-  //     crimes: value
-  //   })
-  // }
-
-  // handleCrimeCounts(crimeCounts) {
-  //   console.log('HANDLED', crimeCounts);
-  //   // this.setState({
-  //   //   crimeCounts: crimeCounts
-  //   // })
-  // }
+  handleCheck(event, isInputChecked) {
+    console.log(event, isInputChecked)
+  }
 
   render() {
 
@@ -64,14 +57,16 @@ class App extends Component {
         <div className="App">
           <Header />
           <br />
-          <Clock sliderValue={this.state.sliderValue}/>
+          <Clock sliderValue={this.state.sliderValue} />
+          <Checkboxes onCheck={this.handleCheck} />
           <Slider 
             onSliderChange={this.handleSliderChange} 
             sliderValue={this.state.sliderValue}
           />
           <Crimes 
             sliderValue={this.state.sliderValue}
-          />
+            checkboxes={this.state.checkboxes}
+           />
         </div>
       </MuiThemeProvider>
     );
